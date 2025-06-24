@@ -68,7 +68,7 @@ class Guru:
         return f"""
         SELECT ?age WHERE {{
           ?person rdfs:label "{entity}"@en.
-          ?person wdt:P569 ?birthdate.
+          ?person wdt:{self._get_property_id(self.DOB)}?birthdate.
           BIND((YEAR(NOW()) - YEAR(?birthdate)) AS ?age)
         }}
         LIMIT 1
